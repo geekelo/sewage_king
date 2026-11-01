@@ -1,10 +1,21 @@
 import { useMemo, useState } from "react"
 import { Link, NavLink, useNavigate, useSearchParams } from "react-router-dom"
+import trucksPhoto from "../assets/sewage-trucks.jpg"
+import plumbersPhoto from "../assets/plumbers.jpg"
+import sokawayPhoto from "../assets/sokaway-workers.jpg"
+import industrialPhoto from "../assets/industrial-sewage.jpg"
 import { CAPACITIES, OPERATORS, SERVICE_TABS, STATES } from "../data"
 import { useStore } from "../store"
 import { TruckArt } from "../components/Art"
 import { Icon } from "../components/Icons"
 import { Brand, KingHeader } from "../components/Ui"
+
+const SERVICE_PHOTOS = {
+  trucks: trucksPhoto,
+  plumbers: plumbersPhoto,
+  sokaway: sokawayPhoto,
+  industrial: industrialPhoto,
+}
 
 export function HomePage() {
   const navigate = useNavigate()
@@ -80,7 +91,7 @@ export function HomePage() {
       <section className="service-grid">
         {SERVICE_TABS.map((item) => (
           <article className="service-card" key={item.id}>
-            <TruckArt caption={item.label} />
+            <img className="service-photo" src={SERVICE_PHOTOS[item.id]} alt="" />
             <div>
               <h3>{item.label}</h3>
               <p className="muted">{item.types[0]}</p>

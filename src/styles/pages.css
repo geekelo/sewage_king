@@ -28,6 +28,7 @@
 }
 .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 0 22px 18px; }
 .service-card { overflow: hidden; padding: 0; }
+.service-photo { width: 100%; height: 168px; object-fit: cover; display: block; }
 .service-card div { padding: 12px 14px 16px; }
 .service-card h3 { margin: 0 0 6px; }
 .banner-split { margin: 0 22px 18px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 12px; }
