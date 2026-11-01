@@ -1,3 +1,4 @@
+.hero-market > *, .gate-hero > *, .op-hero > *, .operator > *, .feature-row > *, .banner-split > *, .search-fields > *, .roles > *, .welcome > * { min-width: 0; }
 .hero-market {
   background:
     radial-gradient(circle at 80% 20%, rgba(255,255,255,.18), transparent 30%),
@@ -113,10 +114,31 @@
 @media (max-width: 800px) {
   .desk { display: none; }
   .mob { display: block; }
-  .mobile-tab { display: flex; }
-  body { padding-bottom: 76px; }
-  .service-grid, .feature-row, .roles, .quick-grid, .trust-row, .choice, .tabs { grid-template-columns: 1fr; }
-  .hero-market { padding-top: 18px; }
-  .hero-market h1 { font-size: 28px; }
-  .search-panel { margin-bottom: 90px; }
+  .mobile-tab {
+    display: flex;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom));
+  }
+  body:has(.mobile-tab) { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+  body:has(.mobile-tab) .toasts { bottom: calc(88px + env(safe-area-inset-bottom)); }
+  .service-grid, .feature-row, .roles, .quick-grid, .trust-row, .choice, .tabs, .contact-box { grid-template-columns: 1fr; }
+  .hero-market { padding: 18px 14px 0; }
+  .hero-market h1, .gate-hero h1, .op-hero h1 { font-size: 28px; }
+  .hero-copy { padding-bottom: 16px; }
+  .search-panel, .trust-row, .service-grid { margin-left: 12px; margin-right: 12px; }
+  .search-panel { margin-top: -18px; padding: 12px; }
+  .trust-row, .service-grid { padding-left: 0; padding-right: 0; }
+  .banner-split { margin: 0 12px 16px; }
+  .banner-split article { align-items: flex-start; }
+  .slogan { font-size: 18px; padding: 8px 16px 24px; }
+  .gate-hero { margin: 12px; padding: 16px; }
+  .gate-panel, .roles { margin-left: 12px; margin-right: 12px; }
+  .secure, .secure.inner { flex-direction: column; align-items: flex-start; margin: 12px; }
+  .gate-foot { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .welcome, .profile-banner .overlay { grid-template-columns: 1fr; display: flex; flex-direction: column; align-items: flex-start; }
+  .tabs button { justify-content: flex-start; text-align: left; }
+  .feature-row .row { flex-wrap: wrap; }
+  .feature-row .row .btn { flex: 1 1 120px; }
+  .result-card .row, .result-card .grid-3 { align-items: start; }
+  .donut { margin-inline: auto; }
+  h1 { overflow-wrap: anywhere; }
 }

@@ -64,6 +64,12 @@ export function KingHeader({ user = "Guest", role, variant = "app" }) {
         {links.map(([to, label]) => (
           <NavLink key={to} to={to} end={to === "/"} onClick={() => setOpen(false)}>{label}</NavLink>
         ))}
+        {variant === "market" && (
+          <>
+            <NavLink className="nav-auth" to="/login" onClick={() => setOpen(false)}>Login</NavLink>
+            <NavLink className="nav-auth" to="/login?mode=signup" onClick={() => setOpen(false)}>Sign Up</NavLink>
+          </>
+        )}
       </nav>
       <div className="header-actions">
         {variant === "market" ? (
@@ -88,7 +94,7 @@ export function KingHeader({ user = "Guest", role, variant = "app" }) {
   )
 }
 
-function SideLinks({ items, active, expanded, toggle }) {
+function SideLinks({ items, active, expanded, toggle, onNavigate }) {
   return items.map((item) => {
     if (item.children) {
       const isOpen = expanded.has(item.id)
@@ -102,7 +108,7 @@ function SideLinks({ items, active, expanded, toggle }) {
           {isOpen && (
             <div className="side-sub">
               {item.children.map((child) => (
-                <NavLink key={child.id} to={child.to} end className={() => (active === child.id ? "active" : undefined)}>{child.label}</NavLink>
+                <NavLink key={child.id} to={child.to} end className={() => (active === child.id ? "active" : undefined)} onClick={onNavigate}>{child.label}</NavLink>
               ))}
             </div>
           )}
@@ -110,7 +116,7 @@ function SideLinks({ items, active, expanded, toggle }) {
       )
     }
     return (
-      <NavLink key={item.id} to={item.to} end className={() => (active === item.id ? "side-link active" : "side-link")}>
+      <NavLink key={item.id} to={item.to} end className={() => (active === item.id ? "side-link active" : "side-link")} onClick={onNavigate}>
         <Icon name={item.icon} />
         <span>{item.label}</span>
         {item.badge ? <b className={String(item.badge) === "NEW" ? "new" : ""}>{item.badge}</b> : null}
@@ -148,7 +154,7 @@ export function Shell({
           {brand === "sokaway" ? <SokawayBrand /> : <Brand tone="light" to="/" />}
         </div>
         <nav>
-          <SideLinks items={items} active={active} expanded={expanded} toggle={toggle} />
+          <SideLinks items={items} active={active} expanded={expanded} toggle={toggle} onNavigate={() => setOpen(false)} />
         </nav>
         {promo}
       </aside>
