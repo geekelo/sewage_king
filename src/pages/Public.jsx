@@ -38,7 +38,6 @@ export function HomePage() {
           <h1 className="mob">Find Sewage Trucks, Plumbers or Sokaway Manual Workers in <span>Your Area.</span></h1>
           <p>Find trusted and verified service providers in your state. Fast. Reliable. Professional.</p>
         </div>
-        <TruckArt />
       </section>
       <form className="search-panel" onSubmit={search}>
         <div className="tabs">
